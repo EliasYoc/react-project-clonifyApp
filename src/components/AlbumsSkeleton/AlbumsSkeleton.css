@@ -1,0 +1,14 @@
+.skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 0.5rem;
+}
+
+@keyframes skeleton {
+  from {
+    background-color: rgba(128, 128, 128, 0.496);
+  }
+  to {
+    background-color: rgba(227, 227, 227, 0.496);
+  }
+}

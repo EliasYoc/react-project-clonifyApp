@@ -1,0 +1,16 @@
+.albums {
+  width: 100%;
+}
+.albums__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 0.5rem;
+}
+.albums__title {
+  margin-bottom: 1rem;
+  background-color: var(--bg-main);
+  border-radius: var(--gral-radius);
+  box-shadow: var(--gral-shadow);
+  padding: 0 1rem;
+  transition: background 0.3s ease;
+}

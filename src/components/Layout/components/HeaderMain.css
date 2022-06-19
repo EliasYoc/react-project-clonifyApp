@@ -1,0 +1,14 @@
+.main-header {
+  height: var(--header-height);
+  background-color: var(--bg-main-header);
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  transition: background 0.3s ease;
+  z-index: 1;
+}

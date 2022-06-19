@@ -1,0 +1,17 @@
+.avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.avatar__img {
+  background-color: var(--bg-circles);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--gral-radius);
+  box-shadow: 0 0 6px -1px var(--bg-circles);
+}
+.avatar__name {
+  font-weight: 500;
+}

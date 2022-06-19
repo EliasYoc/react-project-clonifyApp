@@ -1,13 +1,85 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
-
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+:root {
+  --gral-radius: 0.5rem;
+  --gral-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.808);
+  --transition-inherit-color: color 0.5s ease;
+  --header-height: 50px;
+  --padding-a: 1rem;
+}
+.dark {
+  --radio-green: hsl(117, 79%, 9%);
+  --radio-purple: hsl(271, 73%, 14%);
+  --radio-orange: hsl(22, 100%, 17%);
+  --radio-normal: #181818;
+
+  --bg-main: #181818;
+  --txt-color: #eeeeee;
+
+  --bg-circles: hsl(117, 79%, 19%);
+  --bg-aside: rgba(13, 13, 13, 0.516);
+  --bg-main-header: rgba(13, 13, 13, 0.342);
+
+  --outline-gral: hsl(117, 79%, 79%);
+}
+.light {
+  --radio-green: hsl(117, 100%, 86%);
+  --radio-purple: hsl(271, 71%, 86%);
+  --radio-orange: hsl(27, 89%, 86%);
+  --radio-normal: #e5e5e5;
+
+  --bg-main: #e5e5e5;
+  --txt-color: #252525;
+
+  --bg-circles: hsl(117, 79%, 69%);
+  --bg-aside: rgba(251, 251, 251, 0.515);
+  --bg-main-header: rgba(251, 251, 251, 0.367);
+
+  --outline-gral: hsl(117, 79%, 59%);
+}
+.dark.green {
+  --bg-main: hsl(117, 79%, 9%);
+  --bg-circles: hsla(117, 79%, 59%, 0.55);
+  --bg-main-header: hsla(124, 100%, 10%, 0.587);
+}
+.dark.purple {
+  --bg-main: hsl(271, 73%, 14%);
+  --bg-circles: hsla(271, 73%, 84%, 0.57);
+  --bg-main-header: hsla(280, 100%, 20%, 0.497);
+}
+.dark.orange {
+  --bg-main: hsl(22, 100%, 17%);
+  --bg-circles: hsla(22, 100%, 67%, 0.556);
+  --bg-main-header: hsla(16, 100%, 30%, 0.487);
+}
+.light.green {
+  --bg-main: hsl(117, 100%, 86%);
+  --bg-circles: hsl(117, 100%, 26%);
+  --bg-main-header: hsla(124, 100%, 80%, 0.587);
+}
+.light.purple {
+  --bg-main: hsl(271, 71%, 86%);
+  --bg-circles: hsl(271, 71%, 26%);
+  --bg-main-header: hsla(280, 100%, 80%, 0.497);
+}
+.light.orange {
+  --bg-main: hsl(22, 100%, 86%);
+  --bg-circles: hsl(22, 100%, 46%);
+  --bg-main-header: hsla(16, 100%, 80%, 0.487);
 }

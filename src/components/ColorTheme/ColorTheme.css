@@ -1,0 +1,40 @@
+.colorTheme {
+  display: flex;
+}
+
+.btn-theme--hover-pick {
+  position: relative;
+}
+.btn-theme--hover-pick:hover > .colorTheme__box {
+  transform: translateY(0px);
+  visibility: visible;
+  opacity: 1;
+}
+.colorTheme__box {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: var(--bg-main);
+  border-radius: var(--gral-radius);
+  box-shadow: var(--gral-shadow);
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 10;
+}
+
+.btn-theme {
+  background-color: transparent;
+  border: none;
+  min-width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--txt-color);
+}
