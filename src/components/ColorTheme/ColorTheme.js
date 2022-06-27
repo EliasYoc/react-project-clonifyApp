@@ -1,9 +1,10 @@
 import "./ColorTheme.css";
-import { useEffect, useState } from "react";
-import { ImSun } from "react-icons/im";
-import { FaRegMoon } from "react-icons/fa";
+import { useEffect } from "react";
 import { BiPaint } from "react-icons/bi";
 import RadioColor from "./components/RadioColor";
+import DarkButton from "./components/DarkButton";
+import { useDispatch, useSelector } from "react-redux";
+import { selectThemes, setColorTheme } from "../../features/themesSlice";
 
 const colors = [
   {
@@ -23,10 +24,9 @@ const colors = [
     customPropCss: "--radio-orange",
   },
 ];
-const storageTheme = JSON.parse(localStorage.getItem("theme-clonify"));
 const ColorTheme = () => {
-  const [darkMode, setDarkMode] = useState(storageTheme.mode || "dark");
-  const [colorTheme, setColorTheme] = useState(storageTheme.color || "");
+  const { darkMode, colorTheme } = useSelector(selectThemes);
+  const dispatch = useDispatch();
   useEffect(() => {
     document.body.className = `${darkMode} ${colorTheme}`;
     const theme = {
@@ -36,23 +36,12 @@ const ColorTheme = () => {
     localStorage.setItem("theme-clonify", JSON.stringify(theme));
   }, [darkMode, colorTheme]);
 
-  const handleClick = () => {
-    setDarkMode((theme) => {
-      return theme === "dark" ? "light" : "dark";
-    });
-  };
   const handleChange = (e) => {
-    setColorTheme(e.target.value);
+    dispatch(setColorTheme(e.target.value));
   };
   return (
-    <div className="colorTheme">
-      <button
-        className="btn-theme"
-        onClick={handleClick}
-        aria-label="dark mode"
-      >
-        {darkMode === "dark" ? <ImSun /> : <FaRegMoon />}
-      </button>
+    <div onClick={(e) => e.stopPropagation()} className="colorTheme">
+      <DarkButton darkMode={darkMode} />
       <div className="colorTheme___wrapper">
         <div className="btn-theme btn-theme--hover-pick">
           <BiPaint />

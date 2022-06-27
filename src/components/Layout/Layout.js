@@ -1,6 +1,6 @@
 import "./Layout.css";
 import { useEffect } from "react";
-import { useSearchParams, Outlet, useNavigate } from "react-router-dom";
+import { useSearchParams, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   accessToken,
@@ -11,14 +11,15 @@ import {
 import BgApp from "../../BgApp";
 import Aside from "../Layout/components/Aside";
 import HeaderMain from "../Layout/components/HeaderMain";
-const reqToken = JSON.parse(sessionStorage.getItem("clonify-req-token"));
+import PrincipalButtons from "../PrincipalButtons/PrincipalButtons";
+import useMediaMinWidth720p from "../../hooks/useMediaMinWidth720p";
 
 const Layout = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const needRefresh = useSelector(selectNeedRefreshToken);
   const tokenInfo = useSelector(selectRequestToken);
+  const isDesktop = useMediaMinWidth720p();
   useEffect(
     function exchangeCodeForToken() {
       const code = searchParams.get("code");
@@ -73,20 +74,17 @@ const Layout = () => {
     },
     [dispatch, needRefresh, tokenInfo.refresh_token]
   );
-  // useEffect(() => {
-  //   const storePath = localStorage.getItem("path-clonify");
-  //   navigate(storePath);
-  // }, [navigate]);
 
   return (
     <div className="container-app">
       <BgApp />
-      <Aside />
+      {isDesktop && <Aside />}
       <main className="container-app__main">
         <HeaderMain />
         <div className="background">
           <Outlet />
         </div>
+        {!isDesktop && <PrincipalButtons />}
       </main>
     </div>
   );

@@ -1,9 +1,17 @@
 .avatar {
+  border-radius: var(--gral-radius);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  position: relative;
+  align-self: stretch;
+  padding: 0 0.5rem;
+  transition: background 0.3s ease;
+}
+.avatar:active {
+  background-color: var(--bg-main);
 }
 .avatar__img {
   background-color: var(--bg-circles);
@@ -13,5 +21,14 @@
   box-shadow: 0 0 6px -1px var(--bg-circles);
 }
 .avatar__name {
+  user-select: none;
   font-weight: 500;
+}
+.avatar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
 }

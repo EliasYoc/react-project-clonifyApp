@@ -1,7 +1,9 @@
 .main-header {
   height: var(--header-height);
-  background-color: var(--bg-main-header);
-  backdrop-filter: blur(15px);
+  background-color: var(--bg-secondary);
+  /* Quité el backdrop por problemas de posisionamiento de un elemento hijo en fixed*/
+  /* backdrop-filter: blur(15px); */
+  box-shadow: var(--gral-shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,9 +1,9 @@
 .album {
-  background-color: var(--bg-main);
+  background-color: var(--bg-secondary);
   width: 100%;
   border-radius: var(--gral-radius);
   padding: 1rem;
-  box-shadow: 0 0 10px -5px var(--bg-circles);
+  box-shadow: var(--gral-shadow);
   position: relative;
   transition: background 0.3s ease;
   /* min-height: 150px; */
@@ -28,11 +28,12 @@
   user-select: none;
 }
 .album__toltip {
+  width: 100%;
   user-select: all;
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   background-color: var(--bg-main);
   border: 1px solid var(--bg-circles);
   border-radius: var(--gral-radius);
@@ -40,7 +41,7 @@
   opacity: 0;
   padding: 0 0.5rem;
   visibility: hidden;
-  white-space: nowrap;
+  white-space: normal;
   z-index: 10;
   transition: opacity 0.3s ease 0.3s, visibility 0.3s ease 0.3s;
 }

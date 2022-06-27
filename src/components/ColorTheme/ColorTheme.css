@@ -1,5 +1,6 @@
 .colorTheme {
   display: flex;
+  gap: 0.5rem;
 }
 
 .btn-theme--hover-pick {
@@ -12,7 +13,7 @@
 }
 .colorTheme__box {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 100%;
   background-color: var(--bg-main);
   border-radius: var(--gral-radius);
@@ -30,6 +31,7 @@
 .btn-theme {
   background-color: transparent;
   border: none;
+  border-radius: 50px;
   min-width: 30px;
   height: 30px;
   font-size: 1.2rem;
@@ -37,4 +39,8 @@
   justify-content: center;
   align-items: center;
   color: var(--txt-color);
+  transition: color 0.5s ease, background 0.3s ease;
+}
+.btn-theme:active {
+  background-color: var(--bg-secondary);
 }

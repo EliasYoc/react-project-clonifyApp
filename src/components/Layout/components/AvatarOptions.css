@@ -1,0 +1,33 @@
+.options {
+  border-radius: var(--gral-radius);
+  box-shadow: var(--gral-shadow);
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  padding: 0.5rem;
+  position: absolute;
+  top: 100%;
+  transform: translateY(10px);
+  right: 0;
+  background-color: var(--bg-secondary);
+  transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 10;
+}
+.options.hide-box {
+  transform: translateY(-15px);
+  opacity: 0;
+  visibility: hidden;
+}
+.options__profile {
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: var(--txt-color);
+}
+.logout-btn {
+  padding: 0.5rem 0;
+  border: 2px solid var(--bg-circles);
+  border-radius: var(--gral-radius);
+  background-color: transparent;
+  color: var(--txt-color);
+}

@@ -31,9 +31,9 @@ const HeaderMain = () => {
     }
   }, [dispatch, meError, meIsError]);
 
-  useEffect(() => {
-    if (access_token) refetch();
-  }, [access_token, refetch]);
+  // useEffect(() => {
+  //   if (access_token) refetch();
+  // }, [access_token, refetch]);
   return (
     <header className="main-header">
       <div className="main-header__left"></div>

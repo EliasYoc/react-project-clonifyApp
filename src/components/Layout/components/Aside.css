@@ -14,34 +14,14 @@
     transition: background 0.3s ease;
     padding: 0.5rem;
     position: relative;
-    z-index: 2;
+    z-index: 1;
   }
   .aside__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .aside__links {
-    display: flex;
-    flex-direction: column;
-  }
-  .aside__path {
-    text-decoration: none;
-    color: var(--txt-color);
-    padding: var(--padding-a);
-    border-radius: var(--gral-radius);
-    transition: var(--transition-inherit-color), background 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .aside__path.active {
-    background: var(--bg-main);
-    box-shadow: var(--gral-shadow);
-  }
-  .aside__icon {
-    font-size: 1.5rem;
-  }
+
   .aside__space {
     border: 1px solid var(--bg-circles);
     margin: 1em 0;

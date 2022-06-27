@@ -37,7 +37,7 @@ export const accessToken = createAsyncThunk(
         ...data,
         refresh_token: data.refresh_token || authSpotify.token.refresh_token,
       };
-      console.log("tokenInfo", tokenInfo);
+      // console.log("tokenInfo", tokenInfo);
       sessionStorage.setItem("clonify-req-token", JSON.stringify(tokenInfo));
       return tokenInfo;
     } catch (error) {
@@ -68,7 +68,6 @@ const authSpotifySlice = createSlice({
         state.loading = "fullfilled";
         state.isAuth = true;
         state.token = action.payload;
-        console.log("action", action);
       })
       .addCase(accessToken.rejected, (state) => {
         state.loading = "rejected";

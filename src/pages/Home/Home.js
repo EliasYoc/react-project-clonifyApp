@@ -1,26 +1,38 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AlbumsSkeleton from "../../components/AlbumsSkeleton/AlbumsSkeleton";
 import CardAlbum from "../../components/CardAlbum/CardAlbum";
-import { selectRequestToken } from "../../features/authSpotifySlice";
+import {
+  selectRequestToken,
+  setNeedRefreshToken,
+} from "../../features/authSpotifySlice";
 import { useGetSpotifyDataQuery } from "../../services/spotify";
 import "./Home.css";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const { access_token } = useSelector(selectRequestToken);
 
   const { data, isLoading, isFetching, isError, error, isSuccess, refetch } =
-    useGetSpotifyDataQuery(`browse/new-releases?limit=8&offset=28`);
+    useGetSpotifyDataQuery(`browse/new-releases?limit=8&offset=0`);
   let content;
-  const {
-    data: albums,
-    isLoading: albumsLoading,
-    isError: albumsIsError,
-    isSuccess: albumsSuccess,
-    error: albumsError,
-  } = useGetSpotifyDataQuery("me/albums?limit=4&offset=0");
-
+  // const {
+  //   data: albums,
+  //   isLoading: albumsLoading,
+  //   isError: albumsIsError,
+  //   isSuccess: albumsSuccess,
+  //   error: albumsError,
+  // } = useGetSpotifyDataQuery("me/albums?limit=4&offset=0");
+  useEffect(() => {
+    console.log("effect");
+    if (error?.status === 401) {
+      console.log("necesita refrescar token");
+      dispatch(setNeedRefreshToken(true));
+      // me daba loops infinitos
+    }
+  }, [dispatch, error?.status]);
   if (isError) {
+    console.log(error);
     // error might have error.error (fetch error) or error.data ( data error)
     //investigar que cuando error.data.error.status === 401 entonces refreshToken
     content = error.data ? (
@@ -29,7 +41,9 @@ const Home = () => {
       <p>{error.error}</p>
     );
   }
+
   useEffect(() => {
+    //cuando cambie el token que se refrescó, hará refetch
     if (access_token) refetch();
   }, [access_token, refetch]);
   return (
