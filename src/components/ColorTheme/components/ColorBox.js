@@ -33,7 +33,7 @@ const ColorBox = ({ handleChange }) => {
   const refCustomThemeBox = useRef();
   const refColors = useRef();
   const refColorBox = useRef();
-  const refMyCustomRule = useRef();
+  const refMyCustomRule = useRef(); //cuando tenia null dentro de useref, lanzaba error
   const refRules = useRef();
   const refTimeout = useRef(false); //for debouncing
   const refDelay = useRef(250); //debouncing
