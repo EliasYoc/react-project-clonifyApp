@@ -20,11 +20,16 @@ const list = [
   },
 ];
 const PrincipalButtons = () => {
+  const handleClick = () => {
+    const $mainElement = document.querySelector(".container-app__main");
+    $mainElement.scrollTo({ top: 0 });
+  };
   return (
     <nav className="aside__links">
       {list.map(({ path, title, icon: Icon }, i) => (
         <NavLink
-          onClick={() => {
+          onClick={(e) => {
+            handleClick(e);
             localStorage.setItem("path-clonify", path);
           }}
           key={i}

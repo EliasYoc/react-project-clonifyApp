@@ -1,9 +1,9 @@
 .main-header {
   height: var(--header-height);
-  background-color: var(--bg-secondary);
+  /* background-color: var(--bg-secondary); */
   /* Quité el backdrop por problemas de posisionamiento de un elemento hijo en fixed*/
   /* backdrop-filter: blur(15px); */
-  box-shadow: var(--gral-shadow);
+  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,4 +13,8 @@
   top: 0;
   transition: background 0.3s ease;
   z-index: 1;
+}
+.main-header.setColor {
+  box-shadow: var(--gral-shadow);
+  background: var(--bg-secondary);
 }

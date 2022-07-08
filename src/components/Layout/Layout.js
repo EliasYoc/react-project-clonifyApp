@@ -1,5 +1,5 @@
 import "./Layout.css";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,6 +20,8 @@ const Layout = () => {
   const needRefresh = useSelector(selectNeedRefreshToken);
   const tokenInfo = useSelector(selectRequestToken);
   const isDesktop = useMediaMinWidth720p();
+  const refMain = useRef();
+  const refHeader = useRef();
   useEffect(
     function exchangeCodeForToken() {
       const code = searchParams.get("code");
@@ -74,13 +76,20 @@ const Layout = () => {
     },
     [dispatch, needRefresh, tokenInfo.refresh_token]
   );
+  useEffect(() => {
+    refMain.current.addEventListener("scroll", (e) => {
+      e.target.scrollTop > 50
+        ? refHeader.current.classList.add("setColor")
+        : refHeader.current.classList.remove("setColor");
+    });
+  }, []);
 
   return (
     <div className="container-app">
       <BgApp />
       {isDesktop && <Aside />}
-      <main className="container-app__main">
-        <HeaderMain />
+      <main ref={refMain} className="container-app__main">
+        <HeaderMain ref={refHeader} />
         <div className="background">
           <Outlet />
         </div>

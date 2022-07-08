@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useMediaMinWidth720p = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
   let mediaQuery = window.matchMedia("(min-width: 720px)");
   useEffect(() => {
     const showOrHideOptions = () =>

@@ -1,8 +1,8 @@
 import "./RadioColor.css";
 
-const RadioColor = ({ title, customPropCss, value, onChange }) => {
+const RadioColor = ({ title, customPropCss, value, onChange, onClick }) => {
   return (
-    <label className="radio-label" htmlFor={title}>
+    <label onClick={onClick} className="radio-label" htmlFor={title}>
       <input
         onChange={onChange}
         className="colorTheme__radio"

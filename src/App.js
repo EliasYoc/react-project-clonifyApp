@@ -17,7 +17,6 @@ function App() {
   const dispatch = useDispatch();
   if (reqToken?.access_token && !isUserAuth) {
     //dentro de un useEffect tendré problemas al cambiar el Path de la URL /search /library /
-    console.log("accestoken-local & !isUserAuth");
     dispatch(addToken(reqToken));
     dispatch(isAuth(true));
   }

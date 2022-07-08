@@ -8,13 +8,19 @@
     background-color: var(--bg-aside);
     flex-shrink: 0;
     flex-basis: 300px;
-    backdrop-filter: blur(10px);
     box-shadow: 1px 0px 5px -2px rgba(0, 0, 0, 0.435);
     font-weight: 500;
     transition: background 0.3s ease;
     padding: 0.5rem;
     position: relative;
-    z-index: 1;
+    /* z-index: 1; */
+  }
+  .aside::before {
+    content: "";
+    backdrop-filter: blur(10px);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
   }
   .aside__header {
     display: flex;

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, React, forwardRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectRequestToken,
@@ -8,34 +8,28 @@ import { useGetSpotifyDataQuery } from "../../../services/spotify";
 import Avatar from "./Avatar";
 import "./HeaderMain.css";
 
-const HeaderMain = () => {
+const HeaderMain = forwardRef((props, ref) => {
   const dispatch = useDispatch();
-  const { access_token } = useSelector(selectRequestToken);
   const {
     data: me,
     isLoading: meLoading,
     isError: meIsError,
     isSuccess: meSuccess,
     error: meError,
-    refetch,
   } = useGetSpotifyDataQuery("me");
 
   useEffect(() => {
     if (meIsError) {
       console.log(meError);
       if (meError.data?.error.status === 401) {
-        alert("error header refresh");
-        console.log("dispatch");
+        console.log("Avatar error need refresh");
         dispatch(setNeedRefreshToken(true));
       }
     }
   }, [dispatch, meError, meIsError]);
 
-  // useEffect(() => {
-  //   if (access_token) refetch();
-  // }, [access_token, refetch]);
   return (
-    <header className="main-header">
+    <header ref={ref} className="main-header">
       <div className="main-header__left"></div>
       {meLoading ? <p>Loading...</p> : ""}
       {meSuccess && (
@@ -47,6 +41,6 @@ const HeaderMain = () => {
       )}
     </header>
   );
-};
+});
 
 export default HeaderMain;

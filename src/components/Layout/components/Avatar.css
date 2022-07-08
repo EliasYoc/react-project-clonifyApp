@@ -11,7 +11,7 @@
   transition: background 0.3s ease;
 }
 .avatar:active {
-  background-color: var(--bg-main);
+  background-color: var(--bg-secondary);
 }
 .avatar__img {
   background-color: var(--bg-circles);

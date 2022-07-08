@@ -1,0 +1,26 @@
+.category {
+  aspect-ratio: 1/1;
+  background-color: var(--bg-secondary);
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  box-shadow: var(--gral-shadow);
+  transition: background 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+.category:active {
+  transform: scale(0.93);
+}
+.category__img {
+  position: absolute;
+  width: 100px;
+  transform: rotate(25deg);
+  bottom: 0;
+  right: 0;
+  box-shadow: var(--gral-shadow);
+}
+.category__title {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}

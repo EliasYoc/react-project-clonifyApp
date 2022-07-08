@@ -9,6 +9,7 @@ const SCOPE = [
   "user-read-email",
   "user-top-read",
   "playlist-modify-public",
+  "user-follow-read",
 ];
 export const scopeString = encodeURIComponent(SCOPE.join(" "));
 

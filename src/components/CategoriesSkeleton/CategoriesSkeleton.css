@@ -1,0 +1,32 @@
+.c-skeleton {
+  aspect-ratio: 1/1;
+  background: var(--bg-secondary);
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  box-shadow: var(--gral-shadow);
+  transition: background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.c-skeleton__title {
+  margin: 0.5rem 0 0 0.5rem;
+  border-radius: var(--gral-radius);
+  width: 100px;
+  height: 30px;
+  align-self: flex-start;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  animation: skeleton 0.5s ease infinite alternate;
+}
+.c-skeleton__img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  transform: rotate(25deg);
+  bottom: 0;
+  right: 0;
+  box-shadow: var(--gral-shadow);
+  animation: skeleton 0.5s ease infinite alternate;
+}

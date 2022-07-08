@@ -9,11 +9,32 @@
   border-radius: var(--gral-radius);
   outline: 2px solid var(--bg-circles);
   box-shadow: var(--gral-shadow);
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
+  width: 40px;
+  height: 40px;
   transition: outline 0.1s ease;
+  margin-bottom: 0.2rem;
+  transition: outline 0.3s ease, background 0.3 ease, transform 0.3s ease;
+}
+.colorTheme__radio:active {
+  transform: scale(0.95);
 }
 .colorTheme__radio:checked {
   outline: 4px solid var(--bg-circles);
+}
+.colorTheme__custom-btn {
+  border-radius: var(--gral-radius);
+  position: relative;
+  /* border: 1px solid red; */
+  width: 40px;
+  height: 40px;
+}
+
+.colorTheme__icon {
+  font-size: 1.6rem;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }

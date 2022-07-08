@@ -50,3 +50,6 @@
   opacity: 1;
   visibility: visible;
 }
+.album__any-info {
+  font-size: 0.8rem;
+}
