@@ -107,6 +107,7 @@ code {
   --bg-active-element: #ff673b;
 }
 #custom {
+  --css-rule: 0;
   /* --txt-color: ;
   --outline-gral: ;
   --bg-aside: ;
