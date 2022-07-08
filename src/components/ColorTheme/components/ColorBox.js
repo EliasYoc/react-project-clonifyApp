@@ -66,6 +66,8 @@ const ColorBox = ({ handleChange }) => {
           if (rule.selectorText === "#custom") refMyCustomRule.current = rule;
         }
         document.body.id = "custom";
+        console.log(refRules);
+        console.log(refMyCustomRule);
         getCustomCssProperties(refMyCustomRule);
       } else {
         document.body.id = "";
