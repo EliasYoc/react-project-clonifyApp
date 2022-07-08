@@ -1,9 +1,6 @@
 import { useEffect, React, forwardRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectRequestToken,
-  setNeedRefreshToken,
-} from "../../../features/authSpotifySlice";
+import { useDispatch } from "react-redux";
+import { setNeedRefreshToken } from "../../../features/authSpotifySlice";
 import { useGetSpotifyDataQuery } from "../../../services/spotify";
 import Avatar from "./Avatar";
 import "./HeaderMain.css";

@@ -17,9 +17,9 @@ const Home = () => {
     useGetSpotifyDataQuery(`browse/new-releases?limit=8&offset=0`);
   let content;
 
-  const { mySpotifyId } = useGetSpotifyDataQuery("me", {
-    selectFromResult: ({ data }) => ({ mySpotifyId: data?.id }),
-  });
+  // const { mySpotifyId } = useGetSpotifyDataQuery("me", {
+  //   selectFromResult: ({ data }) => ({ mySpotifyId: data?.id }),
+  // });
   // const {
   //   data: albums,
   //   isLoading: albumsLoading,
