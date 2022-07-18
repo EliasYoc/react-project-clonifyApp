@@ -51,5 +51,7 @@
   visibility: visible;
 }
 .album__any-info {
+  font-weight: 500;
   font-size: 0.8rem;
+  color: var(--txt-second-color);
 }

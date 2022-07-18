@@ -19,104 +19,112 @@ code {
 :root {
   --gral-radius: 0.5rem;
   --gral-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.907);
-  --transition-inherit-color: color 0.5s ease;
   --header-height: 50px;
   --padding-a: 1rem;
+  --transition-inherit-color: color 0.5s ease;
 }
 
 .dark {
+  /* --outline-gral: hsl(117, 79%, 79%); */
+  --bg-aside: rgba(13, 13, 13, 0.516);
+  --bg-main: #101010;
+  --bg-secondary: #222222;
+  --bg-circles: hsl(117, 79%, 19%);
+  --bg-main-header: rgb(13, 13, 13);
+  --bg-mobile-principal-btns: rgb(13, 13, 13);
+  --bg-active-element: hsl(117, 79%, 19%);
+  --danger-color: crimson;
   --radio-green: hsl(117, 79%, 9%);
   --radio-purple: hsl(271, 73%, 14%);
   --radio-orange: hsl(22, 100%, 17%);
   --radio-normal: #181818;
-  --txt-color: #eeeeee;
-  --txt-shadow-color: rgba(0, 0, 0, 0.812);
-  /* --outline-gral: hsl(117, 79%, 79%); */
-  --bg-aside: rgba(13, 13, 13, 0.516);
-
-  --bg-main: #101010;
-  --bg-secondary: #222222;
-
-  --bg-circles: hsl(117, 79%, 19%);
-  /* --bg-main-header: rgba(13, 13, 13, 0.342); */
-  --bg-active-element: hsl(117, 79%, 19%);
-  --danger-color: crimson;
-  --warning-color: rgb(228, 186, 20);
   --success-color: rgb(73, 228, 42);
+  --txt-color: #eeeeee;
+  --txt-second-color: #a6a6a6;
+  --txt-shadow-color: rgba(0, 0, 0, 0.812);
+  --warning-color: rgb(228, 186, 20);
 }
 .light {
+  /* --outline-gral: hsl(117, 79%, 59%); */
+  --bg-aside: rgba(251, 251, 251, 0.515);
+  --bg-main: #e5e5e5;
+  --bg-secondary: #f0f0f0;
+  --bg-circles: hsl(117, 79%, 69%);
+  --bg-main-header: rgb(251, 251, 251);
+  --bg-mobile-principal-btns: rgb(251, 251, 251);
+  --bg-active-element: hsl(117, 79%, 69%);
+  --danger-color: crimson;
   --radio-green: hsl(117, 100%, 86%);
   --radio-purple: hsl(271, 71%, 86%);
   --radio-orange: hsl(27, 89%, 86%);
   --radio-normal: #e5e5e5;
-  --txt-color: #252525;
-  --txt-shadow-color: rgba(205, 205, 205, 0.561);
-  /* --outline-gral: hsl(117, 79%, 59%); */
-  --bg-aside: rgba(251, 251, 251, 0.515);
-
-  --bg-main: #e5e5e5;
-  --bg-secondary: #f0f0f0;
-
-  --bg-circles: hsl(117, 79%, 69%);
-  /* --bg-main-header: rgba(251, 251, 251, 0.367); */
-  --bg-active-element: hsl(117, 79%, 69%);
-  --danger-color: crimson;
-  --warning-color: rgb(211, 177, 5);
   --success-color: rgb(73, 228, 42);
+  --txt-color: #252525;
+  --txt-second-color: #6a6a6a;
+  --txt-shadow-color: rgba(205, 205, 205, 0.561);
+  --warning-color: rgb(211, 177, 5);
 }
 .dark.green {
   --bg-main: hsl(120, 100%, 5%);
   --bg-secondary: hsl(114, 54%, 19%);
-  --bg-circles: hsla(117, 79%, 59%, 0.55);
-  /* --bg-main-header: hsla(124, 100%, 10%, 0.587); */
+  --bg-circles: hsl(117, 56%, 39%);
+  --bg-main-header: hsl(124, 100%, 10%);
+  --bg-mobile-principal-btns: hsl(124, 100%, 10%);
   --bg-active-element: #009f00;
 }
 .dark.purple {
   --bg-main: hsl(271, 100%, 9%);
   --bg-secondary: hsl(272, 54%, 19%);
-  --bg-circles: hsla(271, 73%, 84%, 0.57);
-  /* --bg-main-header: hsla(280, 100%, 20%, 0.497); */
+  --bg-circles: hsl(271, 73%, 84%);
+  --bg-main-header: hsl(280, 100%, 20%);
+  --bg-mobile-principal-btns: hsl(280, 100%, 20%);
   --bg-active-element: #7622ca;
 }
 .dark.orange {
   --bg-main: hsl(22, 97%, 13%);
   --bg-secondary: hsl(22, 100%, 23%);
-  --bg-circles: hsla(22, 100%, 67%, 0.556);
-  /* --bg-main-header: hsla(16, 100%, 30%, 0.487); */
-  --bg-active-element: #a03504;
+  --bg-circles: hsl(22, 67%, 53%);
+  --bg-main-header: hsl(16, 100%, 30%);
+  --bg-mobile-principal-btns: hsl(16, 100%, 30%);
+  --bg-active-element: #d54400;
 }
 .light.green {
   --bg-main: hsl(117, 100%, 86%);
   --bg-secondary: rgb(123, 226, 123);
   --bg-circles: hsl(117, 100%, 26%);
-  /* --bg-main-header: hsla(124, 100%, 80%, 0.587); */
+  --bg-main-header: hsl(124, 100%, 80%);
+  --bg-mobile-principal-btns: hsl(124, 100%, 80%);
   --bg-active-element: #0add1b;
 }
 .light.purple {
   --bg-main: hsl(271, 71%, 86%);
   --bg-secondary: hsl(271, 48%, 71%);
   --bg-circles: hsl(271, 71%, 26%);
-  /* --bg-main-header: hsla(280, 100%, 80%, 0.497); */
+  --bg-main-header: hsl(280, 100%, 80%);
+  --bg-mobile-principal-btns: hsl(280, 100%, 80%);
   --bg-active-element: #a135ff;
 }
 .light.orange {
   --bg-main: hsl(22, 100%, 86%);
   --bg-secondary: hsl(22, 85%, 69%);
   --bg-circles: hsl(22, 100%, 46%);
-  /* --bg-main-header: hsla(16, 100%, 80%, 0.487); */
-  --bg-active-element: #ff673b;
+  --bg-main-header: hsl(16, 100%, 80%);
+  --bg-mobile-principal-btns: hsl(16, 100%, 80%);
+  --bg-active-element: rgb(255, 103, 59);
 }
 #custom {
   --css-rule: 0;
   /* --txt-color: ;
   --outline-gral: ;
   --bg-aside: ;
-
   --bg-main: ;
   --bg-secondary: ;
   --bg-circles: ;
   --bg-main-header: ;
-  --bg-active-element: ; */
+  --bg-active-element: ;
+  --bg-main-header
+  --bg-mobile-principal-btns
+  */
 }
 .text-shadow {
   text-shadow: 0 0 5px var(--txt-shadow-color);
@@ -140,7 +148,7 @@ code {
   appearance: none;
   height: 15px;
   width: 15px;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-active-element);
   border-radius: 5px;
   box-shadow: var(--gral-shadow);
 }

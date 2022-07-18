@@ -1,6 +1,6 @@
 .aside__links {
   height: 60px;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-mobile-principal-btns);
   box-shadow: var(--gral-shadow);
 
   display: flex;
@@ -10,6 +10,13 @@
   padding: 0.2rem 1rem;
   transition: background 0.3s ease;
   gap: 1.5rem;
+}
+.aside__links::before {
+  content: "";
+  inset: 0;
+  backdrop-filter: blur(15px);
+  position: absolute;
+  z-index: -1;
 }
 .aside__path {
   width: 170px;
@@ -37,6 +44,7 @@
   .aside__links {
     height: auto;
     background-color: transparent;
+    backdrop-filter: blur(0);
     box-shadow: none;
     flex-direction: column;
     padding: 0.5rem 0;

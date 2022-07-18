@@ -18,8 +18,9 @@ import {
   colors,
   cssCustomPropertiesList,
 } from "../../../themes/cssCustomProperties";
+import { createPortal } from "react-dom";
 
-const ColorBox = ({ handleChange }) => {
+const ColorBox = ({ handleChange, openCloseColorBox }) => {
   const {
     cssCustomProperties,
     cssCustomPropertiesAlpha,
@@ -124,77 +125,84 @@ const ColorBox = ({ handleChange }) => {
     }
   };
 
-  return (
-    <div ref={refColorBox} className="colorTheme__box">
-      <section
-        ref={refColors}
-        className={`colorTheme__colors ${
-          isOpenCustomThemeBox ? "close-colors" : ""
-        }`}
+  return createPortal(
+    <div onClick={openCloseColorBox} className="wrapper-theme">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        ref={refColorBox}
+        className="colorTheme__box"
       >
-        {colors.map((color, i) => (
-          <RadioColor
-            onClick={() => {
-              dispatch(setIsCustom(false));
-            }}
-            onChange={handleChange}
-            customPropCss={color.customPropCss}
-            key={i}
-            title={color.colorName}
-            value={`${color.colorName}`}
-          />
-        ))}
-        <label
-          onClick={openCustomThemeBox}
-          className="colorTheme__custom-btn"
-          htmlFor="customOption"
+        <section
+          ref={refColors}
+          className={`colorTheme__colors ${
+            isOpenCustomThemeBox ? "close-colors" : ""
+          }`}
         >
-          <input
-            className="colorTheme__radio"
-            type="radio"
-            name="color"
-            id="customOption"
-          />
-          <span className="colorTheme__icon">
-            <MdOutlineColorLens />
-          </span>
-        </label>
-      </section>
-
-      <section
-        ref={refCustomThemeBox}
-        className={`custom-themes ${
-          isOpenCustomThemeBox ? "open-themes" : ""
-        } scroll`}
-      >
-        <header className="custom-themes__header">
-          <button
-            className="btn-theme"
-            onClick={openCustomThemeBox}
-            aria-label="regresar a la caja de colores"
-          >
-            <IoIosArrowBack />
-          </button>
-          <h4 className="custom-themes__title">Custom theme</h4>
-        </header>
-        <div className="custom-themes__list">
-          <button onClick={handleClickResetProperties} className="btn-reset">
-            Reset
-          </button>
-          {cssCustomPropertiesList.map((option, i) => (
-            <CustomOption
-              ref={refMyCustomRule}
+          {colors.map((color, i) => (
+            <RadioColor
+              onClick={() => {
+                dispatch(setIsCustom(false));
+              }}
+              onChange={handleChange}
+              customPropCss={color.customPropCss}
               key={i}
-              cssVariableName={option.trim()}
-              onChange={editingCssVariables}
-              value={
-                cssCustomProperties[option.trim()]?.slice(0, 7) || "#ffffff"
-              }
+              title={color.colorName}
+              value={`${color.colorName}`}
             />
           ))}
-        </div>
-      </section>
-    </div>
+          <label
+            onClick={openCustomThemeBox}
+            className="colorTheme__custom-btn"
+            htmlFor="customOption"
+          >
+            <input
+              className="colorTheme__radio"
+              type="radio"
+              name="color"
+              id="customOption"
+            />
+            <span className="colorTheme__icon">
+              <MdOutlineColorLens />
+            </span>
+          </label>
+        </section>
+
+        <section
+          ref={refCustomThemeBox}
+          className={`custom-themes ${
+            isOpenCustomThemeBox ? "open-themes" : ""
+          } scroll`}
+        >
+          <header className="custom-themes__header">
+            <button
+              className="btn-theme"
+              onClick={openCustomThemeBox}
+              aria-label="regresar a la caja de colores"
+            >
+              <IoIosArrowBack />
+            </button>
+            <h4 className="custom-themes__title">Custom theme</h4>
+          </header>
+          <div className="custom-themes__list">
+            <button onClick={handleClickResetProperties} className="btn-reset">
+              Reset
+            </button>
+            {cssCustomPropertiesList.map((option, i) => (
+              <CustomOption
+                ref={refMyCustomRule}
+                key={i}
+                cssVariableName={option.trim()}
+                onChange={editingCssVariables}
+                value={
+                  cssCustomProperties[option.trim()]?.slice(0, 7) || "#ffffff"
+                }
+              />
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>,
+    document.getElementById("portal")
   );
 };
 

@@ -24,4 +24,7 @@ export const cssCustomPropertiesList = [
   "--bg-circles",
   "--bg-active-element",
   "--txt-shadow-color",
-];
+  "--txt-second-color",
+  "--bg-mobile-principal-btns",
+  "--bg-main-header",
+].sort();

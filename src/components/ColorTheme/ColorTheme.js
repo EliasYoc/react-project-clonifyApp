@@ -29,7 +29,9 @@ const ColorTheme = () => {
   };
   const openCloseColorBox = () => {
     const $themeBox = document.querySelector(".colorTheme__box");
+    const $wrapperTheme = document.querySelector(".wrapper-theme");
     $themeBox.classList.toggle("open-box");
+    $wrapperTheme.classList.toggle("open");
   };
   return (
     <div onClick={(e) => e.stopPropagation()} className="colorTheme">
@@ -41,7 +43,10 @@ const ColorTheme = () => {
       >
         <BiPaint />
       </button>
-      <ColorBox handleChange={handleChange} />
+      <ColorBox
+        handleChange={handleChange}
+        openCloseColorBox={openCloseColorBox}
+      />
     </div>
   );
 };

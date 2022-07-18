@@ -70,7 +70,9 @@ const CustomOption = forwardRef(({ cssVariableName, onChange, value }, ref) => {
 
       {cssCustomProperties[cssVariableName] && (
         <div className="custom-themes__percent">
-          transparency {transparencyPercentage}
+          <p className="custom-themes__subtitle">
+            transparency {transparencyPercentage}
+          </p>
           <div className="custom-themes__wrapper">
             <input
               onChange={handleChangeTransparency}
