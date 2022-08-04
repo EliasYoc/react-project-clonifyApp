@@ -20,15 +20,7 @@ function App() {
     dispatch(addToken(reqToken));
     dispatch(isAuth(true));
   }
-  // useEffect(() => {
-  //   const reqToken = JSON.parse(sessionStorage.getItem("clonify-req-token"));
-  //   console.log("effect");
-  //   if (reqToken?.access_token) {
-  //     console.log("accestoken-local");
-  //     dispatch(addToken(reqToken));
-  //     dispatch(isAuth(true));
-  //   }
-  // }, [dispatch]);
+
   return (
     <div className="App">
       <Routes>
@@ -66,6 +58,7 @@ function App() {
             }
           />
         </Route>
+
         <Route
           path="/login"
           element={
@@ -74,7 +67,6 @@ function App() {
             </PublicRoute>
           }
         />
-
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </div>

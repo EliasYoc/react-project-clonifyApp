@@ -72,13 +72,6 @@ const ColorBox = ({ handleChange, openCloseColorBox }) => {
         getCustomCssProperties(refMyCustomRule);
       } else {
         document.body.id = "";
-        // for (const rule of refRules.current) {
-        //   if (
-        //     rule.selectorText ===
-        //     `.${darkMode}${colorTheme ? "." : ""}${colorTheme}`
-        //   )
-        //     refMyCustomRule.current = rule;
-        // }
       }
     },
     [isCustom, dispatch, colorTheme, darkMode]
@@ -100,13 +93,14 @@ const ColorBox = ({ handleChange, openCloseColorBox }) => {
   };
   const editingCssVariables = (e) => {
     const cssVariable = {
-      variable: e.target.dataset.cssVariable,
-      colorHex: `${e.target.value}${
-        cssCustomPropertiesAlpha[e.target.dataset.cssVariable] || "ff"
+      variable: e.cssVariableName,
+      colorHex: `${e.value}${
+        cssCustomPropertiesAlpha[e.cssVariableName] || "ff"
       }`,
     };
     clearInterval(refTimeout.current); //debouncing
     refTimeout.current = setTimeout(() => {
+      console.log(e);
       dispatch(editCustomProperty(cssVariable));
     }, refDelay.current); //debouncing
     refMyCustomRule.current.style.setProperty(

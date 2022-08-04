@@ -21,7 +21,7 @@ code {
   --gral-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.907);
   --header-height: 50px;
   --padding-a: 1rem;
-  --transition-inherit-color: color 0.5s ease;
+  --transition-inherit-color: color 0.3s ease;
 }
 
 .dark {
@@ -148,7 +148,7 @@ code {
   appearance: none;
   height: 15px;
   width: 15px;
-  background-color: var(--bg-active-element);
+  background-color: var(--txt-second-color);
   border-radius: 5px;
   box-shadow: var(--gral-shadow);
 }

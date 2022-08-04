@@ -7,6 +7,7 @@ import {
 import { hexToPercent, percentToHex } from "../../../utils/themes";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef, useEffect } from "react";
+import { HexColorPicker } from "react-colorful";
 
 const CustomOption = forwardRef(({ cssVariableName, onChange, value }, ref) => {
   const [transparencyPercentage, setTransparencyPercentage] = useState("100");
@@ -54,26 +55,38 @@ const CustomOption = forwardRef(({ cssVariableName, onChange, value }, ref) => {
       `${value}${transparencyColor.alpha}`
     );
   };
+  const [openColorPicker, setOpenColorPicker] = useState(false);
   return (
     <div className="custom-themes__option">
-      <label htmlFor={cssVariableName} className="custom-themes__focur-clr">
+      <label
+        onClick={() => setOpenColorPicker(!openColorPicker)}
+        htmlFor={cssVariableName}
+        className="custom-themes__focus-clr"
+      >
         <p>{cssVariableName}</p>
-        <input
-          onChange={onChange}
-          id={cssVariableName}
-          className="btn-pickColor"
-          type="color"
-          data-css-variable={cssVariableName}
-          value={value}
-        />
+        <button
+          className="btn-alphaColor"
+          aria-label={`transparencia ${transparencyPercentage}`}
+        >
+          <span
+            style={{ background: cssCustomProperties[cssVariableName] }}
+            className="custom-themes__prev-color"
+          ></span>
+        </button>
       </label>
-
-      {cssCustomProperties[cssVariableName] && (
-        <div className="custom-themes__percent">
-          <p className="custom-themes__subtitle">
-            transparency {transparencyPercentage}
-          </p>
-          <div className="custom-themes__wrapper">
+      {openColorPicker && (
+        <>
+          <div className="custom-picker">
+            <HexColorPicker
+              color={value}
+              onClick={(e) => e.stopPropagation()}
+              onChange={(e) => onChange({ value: e, cssVariableName })}
+            />
+          </div>
+          <div className="custom-themes__percent">
+            <p className="custom-themes__subtitle">
+              transparency {transparencyPercentage}
+            </p>
             <input
               onChange={handleChangeTransparency}
               className="custom-themes__range range"
@@ -82,20 +95,10 @@ const CustomOption = forwardRef(({ cssVariableName, onChange, value }, ref) => {
               max={100}
               value={transparencyPercentage}
             />
-            <button
-              className="btn-alphaColor"
-              aria-label={`transparencia ${transparencyPercentage}`}
-            >
-              <span
-                style={{
-                  backgroundColor: cssCustomProperties[cssVariableName],
-                }}
-                className="bg-transparency"
-              ></span>
-            </button>
           </div>
-        </div>
+        </>
       )}
+      {/* cssCustomProperties[cssVariableName] */}
     </div>
   );
 });

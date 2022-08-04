@@ -59,6 +59,9 @@ const authSpotifySlice = createSlice({
     setNeedRefreshToken: (state, action) => {
       state.needRefreshToken = action.payload;
     },
+    logOut: () => {
+      return initialState;
+    },
   },
   extraReducers(builder) {
     builder
@@ -77,7 +80,7 @@ const authSpotifySlice = createSlice({
   },
 });
 
-export const { isAuth, addToken, setNeedRefreshToken } =
+export const { isAuth, addToken, setNeedRefreshToken, logOut } =
   authSpotifySlice.actions;
 export const selectAuth = (state) => state.authSpotify.isAuth;
 export const selectLoading = (state) => state.authSpotify.loading;
