@@ -1,4 +1,5 @@
 import { useGetSpotifyDataQuery } from "../../../services/spotify";
+import ProfileSkeleton from "./ProfileSkeleton";
 import "./ProfileTop.css";
 const ProfileTop = () => {
   const { data, isLoading, isError, isSuccess, error } =
@@ -7,7 +8,7 @@ const ProfileTop = () => {
   // if(error.status === 401) return
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <ProfileSkeleton />}
       {isSuccess && (
         <section className="cover">
           <div className="cover__wrap-img">

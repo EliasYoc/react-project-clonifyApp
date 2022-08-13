@@ -56,6 +56,9 @@ const CustomOption = forwardRef(({ cssVariableName, onChange, value }, ref) => {
     );
   };
   const [openColorPicker, setOpenColorPicker] = useState(false);
+  const isCustomCssPropAvailable = cssCustomProperties[cssVariableName]
+    ? true
+    : false;
   return (
     <div className="custom-themes__option">
       <label
@@ -80,22 +83,24 @@ const CustomOption = forwardRef(({ cssVariableName, onChange, value }, ref) => {
             <HexColorPicker
               color={value}
               onClick={(e) => e.stopPropagation()}
-              onChange={(e) => onChange({ value: e, cssVariableName })}
+              onChange={(e) => onChange({ hexColor: e, cssVariableName })}
             />
           </div>
-          <div className="custom-themes__percent">
-            <p className="custom-themes__subtitle">
-              transparency {transparencyPercentage}
-            </p>
-            <input
-              onChange={handleChangeTransparency}
-              className="custom-themes__range range"
-              type="range"
-              min={0}
-              max={100}
-              value={transparencyPercentage}
-            />
-          </div>
+          {isCustomCssPropAvailable && (
+            <div className="custom-themes__percent">
+              <p className="custom-themes__subtitle">
+                transparency {transparencyPercentage}
+              </p>
+              <input
+                onChange={handleChangeTransparency}
+                className="custom-themes__range range"
+                type="range"
+                min={0}
+                max={100}
+                value={transparencyPercentage}
+              />
+            </div>
+          )}
         </>
       )}
       {/* cssCustomProperties[cssVariableName] */}

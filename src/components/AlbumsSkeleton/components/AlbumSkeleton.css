@@ -11,6 +11,9 @@
   background-color: rgba(128, 128, 128, 0.65);
   animation: skeleton 0.5s ease infinite alternate;
 }
+.skeleton-circle-rounded {
+  border-radius: 100%;
+}
 .skeleton__details {
   height: 1rem;
   background-color: rgba(128, 128, 128, 0.668);

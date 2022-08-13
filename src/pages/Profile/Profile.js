@@ -1,23 +1,12 @@
-import { useGetSpotifyDataQuery } from "../../services/spotify";
+import FollowedPodcasts from "./components/FollowedPodcasts";
+import FollowedPlaylists from "./components/FollowedPlaylists";
 import ProfileTop from "./components/ProfileTop";
 const Profile = () => {
-  const {
-    data: playlistData,
-    // isLoading: playlistIsLoading,
-    // isError: playlistIsError,
-    // isSuccess: PlayListIsSuccess,
-    // error: playlistError,
-  } = useGetSpotifyDataQuery("me/following/?type=artist");
-  //
-  console.log(playlistData);
-  // useEffect(() => {
-  //   if (isError) {
-  //     console.warn("error", error);
-  //   }
-  // }, [isError, error]);
   return (
     <>
       <ProfileTop />
+      <FollowedPodcasts />
+      <FollowedPlaylists />
     </>
   );
 };

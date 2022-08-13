@@ -103,6 +103,7 @@
 }
 .custom-themes__option {
   position: relative;
+  padding-bottom: 0.5rem;
 }
 .custom-themes__option:not(:last-child) {
   border-bottom: 1px solid black;
@@ -111,7 +112,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 0.5rem;
 }
 .custom-themes__prev-color {
   width: 30px;
@@ -120,6 +120,7 @@
 }
 /* React picker */
 .custom-picker .react-colorful {
+  margin-top: 0.5rem;
   width: 100%;
 }
 .custom-picker .react-colorful__saturation {
@@ -160,9 +161,7 @@
 .custom-themes__subtitle {
   color: var(--txt-second-color);
 }
-.custom-themes__range {
-  margin-bottom: 0.3rem;
-}
+
 .bg-transparency {
   position: relative;
   width: 100%;

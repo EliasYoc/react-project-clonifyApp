@@ -1,9 +1,7 @@
-import "./CardAlbum.css";
-
-const CardAlbum = ({ urlImg, altImg, title, anyInfo }) => {
+const CardUser = ({ urlImg, altImg, title, anyInfo }) => {
   return (
     <article className="album">
-      <div className="album__wrap-img">
+      <div className="album__wrap-img circle-img">
         <img loading="lazy" src={urlImg} alt={altImg} />
       </div>
       <div className="album__details">
@@ -17,4 +15,4 @@ const CardAlbum = ({ urlImg, altImg, title, anyInfo }) => {
   );
 };
 
-export default CardAlbum;
+export default CardUser;

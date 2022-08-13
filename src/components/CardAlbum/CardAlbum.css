@@ -13,6 +13,10 @@
   display: flex;
   border-radius: var(--gral-radius);
   overflow: hidden;
+  box-shadow: var(--gral-shadow);
+}
+.album__wrap-img.circle-img {
+  border-radius: 100%;
 }
 .album__wrap-img > img {
   width: 100%;
@@ -20,7 +24,8 @@
 .album__details {
   margin-top: 0.5rem;
 }
-.album__title {
+.album__title,
+.album__any-info {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -51,7 +56,6 @@
   visibility: visible;
 }
 .album__any-info {
-  font-weight: 500;
   font-size: 0.8rem;
   color: var(--txt-second-color);
 }

@@ -1,18 +1,24 @@
 import { useEffect, React, forwardRef } from "react";
-import { useDispatch } from "react-redux";
-import { setNeedRefreshToken } from "../../../features/authSpotifySlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectRequestToken,
+  setNeedRefreshToken,
+} from "../../../features/authSpotifySlice";
 import { useGetSpotifyDataQuery } from "../../../services/spotify";
 import Avatar from "./Avatar";
 import "./HeaderMain.css";
 
 const HeaderMain = forwardRef((props, ref) => {
   const dispatch = useDispatch();
+  const { access_token } = useSelector(selectRequestToken);
+
   const {
     data: me,
     isLoading: meLoading,
     isError: meIsError,
     isSuccess: meSuccess,
     error: meError,
+    refetch,
   } = useGetSpotifyDataQuery("me");
 
   useEffect(() => {
@@ -24,7 +30,10 @@ const HeaderMain = forwardRef((props, ref) => {
       }
     }
   }, [dispatch, meError, meIsError]);
-
+  useEffect(() => {
+    //cuando cambie el token que se refrescó, hará refetch
+    if (access_token) refetch();
+  }, [access_token, refetch]);
   return (
     <header ref={ref} className="main-header">
       <div className="main-header__left"></div>
