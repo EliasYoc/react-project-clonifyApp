@@ -1,8 +1,14 @@
-import "./CardAlbum.css";
+import { useNavigate } from "react-router-dom";
+import "./CardSquare.css";
 
-const CardAlbum = ({ urlImg, altImg, title, anyInfo }) => {
+const CardSquare = ({ urlImg, altImg, title, anyInfo, id, type }) => {
+  let navigate = useNavigate();
+  const handleRedirect = () => {
+    console.log("id", `../${type}/${id}`);
+    navigate(`/${type}/${id}`);
+  };
   return (
-    <article className="album">
+    <article onClick={handleRedirect} className="album">
       <div className="album__wrap-img">
         <img loading="lazy" src={urlImg} alt={altImg} />
       </div>
@@ -17,4 +23,4 @@ const CardAlbum = ({ urlImg, altImg, title, anyInfo }) => {
   );
 };
 
-export default CardAlbum;
+export default CardSquare;

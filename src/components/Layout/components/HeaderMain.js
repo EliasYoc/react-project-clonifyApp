@@ -22,6 +22,7 @@ const HeaderMain = forwardRef((props, ref) => {
   } = useGetSpotifyDataQuery("me");
 
   useEffect(() => {
+    console.log("header", meIsError);
     if (meIsError) {
       console.log(meError);
       if (meError.data?.error.status === 401) {
@@ -34,6 +35,7 @@ const HeaderMain = forwardRef((props, ref) => {
     //cuando cambie el token que se refrescó, hará refetch
     if (access_token) refetch();
   }, [access_token, refetch]);
+  if (meIsError) return <p>header error</p>;
   return (
     <header ref={ref} className="main-header">
       <div className="main-header__left"></div>

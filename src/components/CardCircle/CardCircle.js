@@ -1,6 +1,13 @@
-const CardUser = ({ urlImg, altImg, title, anyInfo }) => {
+import { useNavigate } from "react-router-dom";
+
+const CardCircle = ({ urlImg, altImg, title, anyInfo, id, type }) => {
+  let navigate = useNavigate();
+  const handleRedirect = () => {
+    navigate(`/${type}/${id}`);
+    console.log("id", `${type}/${id}`);
+  };
   return (
-    <article className="album">
+    <article onClick={handleRedirect} className="album">
       <div className="album__wrap-img circle-img">
         <img loading="lazy" src={urlImg} alt={altImg} />
       </div>
@@ -15,4 +22,4 @@ const CardUser = ({ urlImg, altImg, title, anyInfo }) => {
   );
 };
 
-export default CardUser;
+export default CardCircle;

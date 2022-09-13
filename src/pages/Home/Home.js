@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import AlbumsSkeleton from "../../components/AlbumsSkeleton/AlbumsSkeleton";
-import CardAlbum from "../../components/CardAlbum/CardAlbum";
+import CardSquare from "../../components/CardSquare/CardSquare";
 import GridList from "../../components/GridContainer/components/GridList";
 import GridContainer from "../../components/GridContainer/GridContainer";
 import {
@@ -59,11 +59,13 @@ const Home = () => {
         <GridContainer title="Releases">
           <GridList>
             {data.albums.items.map((release) => (
-              <CardAlbum
+              <CardSquare
+                id={release.id}
                 urlImg={release.images[1].url}
                 altImg={release.name}
                 title={release.name}
                 anyInfo={release.album_type}
+                type={release.type}
                 key={release.id}
               />
             ))}

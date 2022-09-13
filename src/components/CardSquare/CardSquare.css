@@ -1,12 +1,16 @@
 .album {
   background-color: var(--bg-secondary);
+  cursor: pointer;
   width: 100%;
   border-radius: var(--gral-radius);
   padding: 1rem;
   box-shadow: var(--gral-shadow);
   position: relative;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
   /* min-height: 150px; */
+}
+.album:active {
+  transform: scale(0.95);
 }
 .album__wrap-img {
   aspect-ratio: 1/1;

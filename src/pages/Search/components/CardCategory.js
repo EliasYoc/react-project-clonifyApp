@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { Link } from "react-router-dom";
 import "./CardCategory.css";
 const hexColors = [
   "#27856a",
@@ -19,7 +20,7 @@ const hexColors = [
   "#eb402e",
   "#8113d7",
 ];
-const CardCategory = ({ title, img }) => {
+const CardCategory = ({ title, img, id }) => {
   const randomIndex = Math.ceil(Math.random() * hexColors.length);
 
   const randomColor = hexColors[randomIndex];
@@ -34,6 +35,7 @@ const CardCategory = ({ title, img }) => {
         src={img}
         alt={`categoria ${title}`}
       />
+      <Link className="category__genreLink" to={`category/${id}`} />
     </div>
   );
 };

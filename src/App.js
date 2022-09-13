@@ -4,6 +4,10 @@ import "./App.css";
 import Layout from "./components/Layout/Layout";
 import { addToken, isAuth, selectAuth } from "./features/authSpotifySlice";
 import Home from "./pages/Home/Home";
+import LibraryAlbums from "./pages/Library/components/LibraryAlbums";
+import LibraryArtists from "./pages/Library/components/LibraryArtists";
+import LibraryPlaylists from "./pages/Library/components/LibraryPlaylists";
+import LibraryPodcasts from "./pages/Library/components/LibraryPodcasts";
 import Library from "./pages/Library/Library";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
@@ -40,7 +44,12 @@ function App() {
                 <Library />
               </PrivateRoute>
             }
-          />
+          >
+            <Route path="playlists" element={<LibraryPlaylists />} />
+            <Route path="podcasts" element={<LibraryPodcasts />} />
+            <Route path="artistas" element={<LibraryArtists />} />
+            <Route path="albumes" element={<LibraryAlbums />} />
+          </Route>
           <Route
             path="search"
             element={

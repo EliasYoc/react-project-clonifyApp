@@ -4,7 +4,6 @@ import "./ProfileTop.css";
 const ProfileTop = () => {
   const { data, isLoading, isError, isSuccess, error } =
     useGetSpotifyDataQuery("me");
-  console.log(data);
   // if(error.status === 401) return
   return (
     <>
