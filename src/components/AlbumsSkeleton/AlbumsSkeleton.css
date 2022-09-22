@@ -1,0 +1,27 @@
+.skeleton {
+  display: flex;
+  flex-direction: column;
+}
+.skeleton__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1.5rem;
+}
+.skeleton__title {
+  margin-bottom: 1rem;
+  height: 32px;
+  border-radius: var(--gral-radius);
+  box-shadow: var(--gral-shadow);
+  width: 200px;
+  align-self: flex-start;
+  animation: skeleton 0.5s ease infinite alternate;
+}
+
+@keyframes skeleton {
+  from {
+    background-color: rgb(101, 101, 101);
+  }
+  to {
+    background-color: rgb(153, 153, 153);
+  }
+}

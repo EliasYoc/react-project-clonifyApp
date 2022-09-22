@@ -1,0 +1,65 @@
+.album {
+  background-color: var(--bg-secondary);
+  cursor: pointer;
+  width: 100%;
+  border-radius: var(--gral-radius);
+  padding: 1rem;
+  box-shadow: var(--gral-shadow);
+  position: relative;
+  transition: background 0.3s ease, transform 0.3s ease;
+  /* min-height: 150px; */
+}
+.album:active {
+  transform: scale(0.95);
+}
+.album__wrap-img {
+  aspect-ratio: 1/1;
+  display: flex;
+  border-radius: var(--gral-radius);
+  overflow: hidden;
+  box-shadow: var(--gral-shadow);
+}
+.album__wrap-img.circle-img {
+  border-radius: 100%;
+}
+.album__wrap-img > img {
+  width: 100%;
+}
+.album__details {
+  margin-top: 0.5rem;
+}
+.album__title,
+.album__any-info {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  user-select: none;
+}
+.album__toltip {
+  width: 100%;
+  user-select: all;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: var(--bg-main);
+  border: 1px solid var(--bg-circles);
+  border-radius: var(--gral-radius);
+  box-shadow: var(--gral-shadow);
+  opacity: 0;
+  padding: 0 0.5rem;
+  visibility: hidden;
+  white-space: normal;
+  z-index: 10;
+  transition: opacity 0.3s ease 0.3s, visibility 0.3s ease 0.3s;
+}
+
+.album__title:hover .album__toltip {
+  opacity: 1;
+  visibility: visible;
+}
+.album__any-info {
+  font-size: 0.8rem;
+  color: var(--txt-second-color);
+}

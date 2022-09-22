@@ -1,0 +1,23 @@
+.skeleton__album {
+  min-height: 200px;
+  background-color: var(--bg-main);
+  box-shadow: var(--gral-shadow);
+  border-radius: var(--gral-radius);
+  padding: 1rem;
+}
+.skeleton__wrap-img {
+  border-radius: var(--gral-radius);
+  aspect-ratio: 1/1;
+  background-color: rgba(128, 128, 128, 0.65);
+  animation: skeleton 0.5s ease infinite alternate;
+}
+.skeleton-circle-rounded {
+  border-radius: 100%;
+}
+.skeleton__details {
+  height: 1rem;
+  background-color: rgba(128, 128, 128, 0.668);
+  border-radius: var(--gral-radius);
+  margin-top: 0.5rem;
+  animation: skeleton 0.5s ease infinite alternate;
+}

@@ -1,0 +1,25 @@
+.tabs {
+  padding: 0 1rem;
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.tabs__ul {
+  border-radius: var(--gral-radius);
+}
+.tabs__tab {
+  display: block;
+  background-color: var(--bg-secondary);
+  color: var(--txt-color);
+  text-decoration: none;
+  padding: 0.7rem;
+  border-radius: var(--gral-radius);
+  transition: var(--transition-inherit-color), background 0.3s ease;
+}
+.tabs__tab.activeTab {
+  font-weight: 700;
+  background-color: var(--bg-active-element);
+  box-shadow: var(--gral-shadow);
+  transition: font-weight 0.1s ease;
+}

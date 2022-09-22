@@ -1,0 +1,26 @@
+.main-header {
+  height: var(--header-height);
+  /* Quité el backdrop por problemas de posisionamiento de un elemento hijo en fixed*/
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.main-header.setColor {
+  box-shadow: var(--gral-shadow);
+  background: var(--bg-main-header);
+}
+.main-header.setColor::before {
+  content: "";
+  backdrop-filter: blur(15px);
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+}
