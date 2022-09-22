@@ -152,3 +152,9 @@ code {
   border-radius: 5px;
   box-shadow: var(--gral-shadow);
 }
+.ellipsis-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
