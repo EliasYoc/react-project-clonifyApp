@@ -10,6 +10,7 @@ const SCOPE = [
   "user-top-read",
   "playlist-modify-public",
   "user-follow-read",
+  "user-read-playback-position",
 ];
 export const scopeString = encodeURIComponent(SCOPE.join(" "));
 

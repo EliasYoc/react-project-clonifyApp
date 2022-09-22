@@ -12,6 +12,7 @@ import Library from "./pages/Library/Library";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import Search from "./pages/Search/Search";
+import Podcast from "./pages/Podcast/Podcast";
 import PrivateRoute from "./routers/PrivateRoute";
 import PublicRoute from "./routers/PublicRoute";
 const reqToken = JSON.parse(sessionStorage.getItem("clonify-req-token"));
@@ -37,6 +38,40 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="playlist/:id"
+            element={
+              <PrivateRoute>
+                <p>Playlist</p>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="album/:albumId"
+            element={
+              <PrivateRoute>
+                <p>Album</p>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="show/:showId"
+            element={
+              <PrivateRoute>
+                <Podcast />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="artist/:artistId"
+            element={
+              <PrivateRoute>
+                <p>Artist</p>
+              </PrivateRoute>
+            }
+          />
+
           <Route
             path="library"
             element={
