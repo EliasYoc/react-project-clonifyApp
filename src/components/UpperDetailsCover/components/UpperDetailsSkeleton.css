@@ -1,0 +1,31 @@
+.skeletonUpper {
+  color: transparent;
+}
+.skeletonUpper__img,
+.skeletonUpper__type,
+.skeletonUpper__title,
+.skeletonUpper__aditional {
+  animation: skeletonUpper 0.5s ease infinite alternate;
+}
+
+.skeletonUpper__type,
+.skeletonUpper__title,
+.skeletonUpper__aditional {
+  border-radius: var(--gral-radius);
+  max-width: 500px;
+}
+.skeletonUpper__type {
+  max-width: 100px;
+}
+.skeletonUpper__title {
+  font-size: clamp(1.5rem, 5.2vw, 2.5rem);
+}
+
+@keyframes skeletonUpper {
+  from {
+    background-color: rgb(101, 101, 101);
+  }
+  to {
+    background-color: rgb(153, 153, 153);
+  }
+}

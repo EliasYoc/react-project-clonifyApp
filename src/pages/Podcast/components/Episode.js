@@ -10,7 +10,9 @@ const Episode = ({
   return (
     <article
       style={{
-        animationDuration: `${delayAnimationSeconds}ms`,
+        animationDuration: "300ms",
+        animationFillMode: "backwards",
+        animationDelay: `${delayAnimationSeconds}ms`,
       }}
       className="episode"
     >
