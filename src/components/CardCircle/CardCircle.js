@@ -4,7 +4,6 @@ const CardCircle = ({ urlImg, altImg, title, anyInfo, id, type }) => {
   let navigate = useNavigate();
   const handleRedirect = () => {
     navigate(`/${type}/${id}`);
-    console.log("id", `${type}/${id}`);
   };
   return (
     <article onClick={handleRedirect} className="album">

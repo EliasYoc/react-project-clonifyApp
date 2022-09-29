@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import UpperDetailsSkeleton from "../../components/UpperDetailsCover/components/UpperDetailsSkeleton";
 import UpperDetailsCover from "../../components/UpperDetailsCover/UpperDetailsCover";
 import {
   selectRequestToken,
   setNeedRefreshToken,
 } from "../../features/authSpotifySlice";
 import { useGetSpotifyDataQuery } from "../../services/spotify";
-import ProfileSkeleton from "../Profile/components/ProfileSkeleton";
 import Episode from "./components/Episode";
 import PodcastAside from "./components/PodcastAside";
 import "./Podcast.css";
@@ -23,11 +23,10 @@ const Podcast = () => {
     refetch,
     error,
   } = useGetSpotifyDataQuery(`shows/${showId}`);
-  console.log(show);
   useEffect(() => {
     //manera correcta
     if (isError && error.data?.error.status === 401) {
-      console.log("Avatar error need refresh");
+      console.error("Avatar error need refresh");
       dispatch(setNeedRefreshToken(true));
     }
   }, [dispatch, error?.data?.error.status, isError]);
@@ -35,7 +34,7 @@ const Podcast = () => {
     //la primera vez o cuando cambie el token que se refrescó, hará refetch
     if (access_token) refetch();
   }, [access_token, refetch]);
-  if (isLoading) return <ProfileSkeleton />;
+  if (isLoading) return <UpperDetailsSkeleton hasType hasImg />;
   if (isError) return <p>Occur an error</p>;
   return (
     <>
@@ -57,7 +56,7 @@ const Podcast = () => {
                 imageSrc={episode.images[2].url}
                 espisodeTitle={episode.name}
                 episodeDescription={episode.description}
-                delayAnimationSeconds={100 + i * 150}
+                delayAnimationSeconds={100 + i * 50}
               />
             ))}
           </div>

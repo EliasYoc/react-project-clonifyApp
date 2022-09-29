@@ -1,0 +1,26 @@
+.topList__title {
+  padding: 0 0 1rem;
+  padding: 1rem;
+}
+.topList__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+.topList__popular {
+  display: flex;
+  justify-content: space-between;
+  animation: animateListItem ease;
+  padding: 0.5rem;
+  background-color: var(--bg-secondary);
+  border-radius: var(--gral-radius);
+  align-items: center;
+}
+.topList__image {
+  flex-shrink: 0;
+  display: flex;
+  min-width: 300px;
+  gap: 0.5rem;
+  align-items: center;
+}

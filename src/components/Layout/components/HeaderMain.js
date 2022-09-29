@@ -11,7 +11,6 @@ import "./HeaderMain.css";
 const HeaderMain = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const { access_token } = useSelector(selectRequestToken);
-
   const {
     data: me,
     isLoading: meLoading,
@@ -22,7 +21,6 @@ const HeaderMain = forwardRef((props, ref) => {
   } = useGetSpotifyDataQuery("me");
 
   useEffect(() => {
-    console.log("header", meIsError);
     if (meIsError) {
       console.log(meError);
       if (meError.data?.error.status === 401) {

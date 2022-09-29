@@ -158,3 +158,13 @@ code {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+@keyframes animateListItem {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

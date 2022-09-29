@@ -10,6 +10,7 @@ const initialState = {
     isCustom: false,
     isOpenCustomThemeBox: false,
   },
+  randomRgbOfUpperImg: "0, 0, 0",
   // alphaHexNum: "ff",
 };
 
@@ -53,6 +54,9 @@ const themesSlice = createSlice({
         payload.alpha
       }`;
     },
+    setRandomRgbColor: (state, { payload }) => {
+      state.randomRgbOfUpperImg = payload;
+    },
   },
 });
 
@@ -67,8 +71,10 @@ export const {
   addCustomPropertyAlpha,
   editCustomPropertyAlpha,
   addCustomPropertiesAlpha,
+  setRandomRgbColor,
 } = themesSlice.actions;
 export const selectThemes = (state) => state.themes;
 export const selectCustomThemeConfig = (state) =>
   state.themes.customThemeConfiguration;
+export const selectRandomRgb = (state) => state.themes.randomRgbOfUpperImg;
 export default themesSlice.reducer;
