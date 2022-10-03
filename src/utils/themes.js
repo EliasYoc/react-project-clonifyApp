@@ -24,21 +24,34 @@ export const getAllPixelsFromImgId = (imageElementId = "") => {
     $img.onload = function () {
       const width = ($canvas.width = $img.width);
       const height = ($canvas.height = $img.height);
-      let rgbaPixelString = [];
+      let rgbaPixel = [];
       const ctx = $canvas.getContext("2d");
       ctx.drawImage($img, 0, 0, width, height);
       const imageData = ctx.getImageData(0, 0, width, height);
       const frameLength = imageData.data.length;
+      const decimalBetween0And1 = 1 / 255;
       for (let i = 0; i < frameLength; i += 4) {
-        rgbaPixelString.push(
-          // r , g , b
-          `${imageData.data[i]}, ${imageData.data[i + 1]}, ${
-            imageData.data[i + 2]
-          }`
-          //  ${imageData.data[i + 3]} alpha
+        const alphaDecimal = imageData.data[i + 3] * decimalBetween0And1;
+        rgbaPixel.push(
+          // r , g , b, a
+          {
+            rgbString: `${imageData.data[i]}, ${imageData.data[i + 1]}, ${
+              imageData.data[i + 2]
+            }`,
+            rgbaString: `${imageData.data[i]}, ${imageData.data[i + 1]}, ${
+              imageData.data[i + 2]
+            }, ${alphaDecimal}`,
+            r: imageData.data[i],
+            g: imageData.data[i + 1],
+            b: imageData.data[i + 2],
+            a: imageData.data[i + 3],
+          }
+          // `${imageData.data[i]}, ${imageData.data[i + 1]}, ${
+          //   imageData.data[i + 2]
+          // }`
         );
       }
-      return resolve(rgbaPixelString); // must return all pixels color: ;
+      return resolve(rgbaPixel); // must return all pixels color: ;
     };
     $img.onerror = (e) => reject(new Error(`${e.type}: loaging image`));
     //return rgbaPixelString  --me devuelve array vacío
