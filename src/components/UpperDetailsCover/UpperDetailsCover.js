@@ -16,16 +16,19 @@ const UpperDetailsCover = ({
   const rgbColor = useSelector(selectRandomRgb);
   useEffect(() => {
     getAllPixelsFromImgId("upperImg").then(
-      (imgRgbPixels) => {
-        const uniqueColors = [...new Set(imgRgbPixels)];
+      (imgRgbaPixels) => {
+        console.log(imgRgbaPixels);
         const randomColorIndex = Math.round(
-          Math.random() * (uniqueColors.length - 1)
+          Math.random() * (imgRgbaPixels.length - 1)
         );
-        const randomRgbColor = uniqueColors[randomColorIndex];
-        dispatch(setRandomRgbColor(randomRgbColor));
+        const { rgbString } = imgRgbaPixels[randomColorIndex];
+        dispatch(setRandomRgbColor(rgbString));
       },
       (error) => console.error(error)
     );
+    return () => {
+      dispatch(setRandomRgbColor("0, 0, 0"));
+    };
   }, [dispatch]);
 
   return (
