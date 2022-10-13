@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux";
 import { selectRandomRgb } from "../../../features/themesSlice";
+import { useLocation } from "react-router-dom";
 
 const PodcastAside = ({ podcastDetails }) => {
+  const { pathname } = useLocation();
   const rgbColor = useSelector(selectRandomRgb);
 
   return (
     <aside
       style={{
-        background: `rgb(${rgbColor},.7)`,
+        background: `rgb(${rgbColor[pathname]},.7)`,
       }}
       className="asideShow"
     >
