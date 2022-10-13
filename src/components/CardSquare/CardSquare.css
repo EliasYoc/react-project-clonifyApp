@@ -24,6 +24,7 @@
 }
 .album__wrap-img > img {
   width: 100%;
+  border-radius: 2px;
 }
 .album__details {
   margin-top: 0.5rem;
