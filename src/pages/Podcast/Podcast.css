@@ -1,6 +1,7 @@
 .asideShow {
   padding: 0 1rem 1rem;
   position: relative;
+  transition: background 0.3s ease;
 }
 .asideShow__gradient {
   position: absolute;
