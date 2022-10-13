@@ -10,7 +10,11 @@ const initialState = {
     isCustom: false,
     isOpenCustomThemeBox: false,
   },
-  randomRgbOfUpperImg: "0, 0, 0",
+  randomRgbOfUpperImg: {},
+  elementsTransition: {
+    outgoingElementBounding: null,
+    incomingElementBounding: null,
+  },
   // alphaHexNum: "ff",
 };
 
@@ -55,7 +59,17 @@ const themesSlice = createSlice({
       }`;
     },
     setRandomRgbColor: (state, { payload }) => {
-      state.randomRgbOfUpperImg = payload;
+      state.randomRgbOfUpperImg[payload.info] = payload.color;
+    },
+
+    setOutgoingElement: (state, { payload }) => {
+      state.elementsTransition.outgoingElementBounding = payload;
+    },
+    setIncomingElement: (state, { payload }) => {
+      state.elementsTransition.incomingElementBounding = payload;
+    },
+    resetElementTransition: (state) => {
+      state.elementsTransition = initialState.elementsTransition;
     },
   },
 });
@@ -72,9 +86,14 @@ export const {
   editCustomPropertyAlpha,
   addCustomPropertiesAlpha,
   setRandomRgbColor,
+  setOutgoingElement,
+  setIncomingElement,
+  resetElementTransition,
 } = themesSlice.actions;
 export const selectThemes = (state) => state.themes;
 export const selectCustomThemeConfig = (state) =>
   state.themes.customThemeConfiguration;
 export const selectRandomRgb = (state) => state.themes.randomRgbOfUpperImg;
+export const selectElementTransition = (state) =>
+  state.themes.elementsTransition;
 export default themesSlice.reducer;

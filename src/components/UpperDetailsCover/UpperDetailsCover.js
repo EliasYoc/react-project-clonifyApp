@@ -1,8 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectRandomRgb, setRandomRgbColor } from "../../features/themesSlice";
+import { useLocation } from "react-router-dom";
+import {
+  selectElementTransition,
+  selectRandomRgb,
+  setIncomingElement,
+  setRandomRgbColor,
+} from "../../features/themesSlice";
+import { useElementPosition } from "../../hooks/useElementPosition";
 import { getAllPixelsFromImgId } from "../../utils/themes";
 import "./UpperDetailsCover.css";
+
 const UpperDetailsCover = ({
   imgSrc = null,
   title = "",
@@ -14,32 +22,51 @@ const UpperDetailsCover = ({
 }) => {
   const dispatch = useDispatch();
   const rgbColor = useSelector(selectRandomRgb);
+  const { pathname } = useLocation();
+  const { incomingElementBounding } = useSelector(selectElementTransition);
+  const { refElement, getPosition } = useElementPosition();
   useEffect(() => {
-    getAllPixelsFromImgId("upperImg").then(
-      (imgRgbaPixels) => {
-        console.log(imgRgbaPixels);
-        const randomColorIndex = Math.round(
-          Math.random() * (imgRgbaPixels.length - 1)
-        );
-        const { rgbString } = imgRgbaPixels[randomColorIndex];
-        dispatch(setRandomRgbColor(rgbString));
-      },
-      (error) => console.error(error)
-    );
+    // en themeSlice.js crear objeto que guarde dinamicamente un color de cada section(show/podcast/artist/playlist) de acuerdo al [show/:id]
+    // const objPageColors = {
+    //   ["show/id"]: "color"
+    // }
+    // if(!objPaheColors){ getAllPixelsFromImgId}
+    if (!rgbColor[pathname]) {
+      getAllPixelsFromImgId("upperImg").then(
+        (imgRgbaPixels) => {
+          const randomColorIndex = Math.round(
+            Math.random() * (imgRgbaPixels.length - 1)
+          );
+          const { rgbString } = imgRgbaPixels[randomColorIndex];
+          const randomColorInfo = {
+            info: pathname,
+            color: rgbString,
+          };
+          dispatch(setRandomRgbColor(randomColorInfo));
+        },
+        (error) => console.error(error)
+      );
+    }
+
     return () => {
       dispatch(setRandomRgbColor("0, 0, 0"));
     };
-  }, [dispatch]);
-
+  }, [dispatch, pathname, rgbColor]);
+  useEffect(() => {
+    if (!incomingElementBounding) {
+      const incomingElement = getPosition();
+      dispatch(setIncomingElement(incomingElement));
+    }
+  }, [dispatch, getPosition, incomingElementBounding]);
   return (
     // style={{ backgroundImage: `url(${imgSrc})` }}
     <section
       style={{
-        background: `rgb(${rgbColor}, .7)`,
-        backdropFilter: "blur(20px)",
+        background: `rgb(${rgbColor[pathname]}, .7)`,
       }}
       className="details"
     >
+      <div className="upperBlur"></div>
       <div className="details__wrap-info">
         {imgSrc && (
           <div className="details__wrap-img">
@@ -49,6 +76,7 @@ const UpperDetailsCover = ({
               id="upperImg"
               src={imgSrc}
               alt={publisher}
+              ref={refElement}
             />
           </div>
         )}

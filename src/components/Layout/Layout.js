@@ -13,6 +13,10 @@ import Aside from "../Layout/components/Aside";
 import HeaderMain from "../Layout/components/HeaderMain";
 import PrincipalButtons from "../PrincipalButtons/PrincipalButtons";
 import useMediaMinWidth720p from "../../hooks/useMediaMinWidth720p";
+import {
+  resetElementTransition,
+  selectElementTransition,
+} from "../../features/themesSlice";
 
 const Layout = () => {
   const [searchParams] = useSearchParams();
@@ -26,7 +30,6 @@ const Layout = () => {
     function exchangeCodeForToken() {
       const code = searchParams.get("code");
       if (code) {
-        console.log("code");
         dispatch(
           accessToken({
             method: "POST",
@@ -52,7 +55,6 @@ const Layout = () => {
     function refreshToken() {
       if (needRefresh) {
         console.warn("necesita refrescar el token " + needRefresh);
-
         dispatch(
           accessToken({
             method: "POST",
@@ -83,7 +85,51 @@ const Layout = () => {
         : refHeader.current.classList.remove("setColor");
     });
   }, []);
-
+  const { outgoingElementBounding, incomingElementBounding } = useSelector(
+    selectElementTransition
+  );
+  const refIncomingElement = useRef();
+  useEffect(
+    function animateIncomingImage() {
+      if (outgoingElementBounding && incomingElementBounding) {
+        const anim = refIncomingElement.current.animate(
+          [
+            {
+              zIndex: 10,
+              position: "fixed",
+              height: `${outgoingElementBounding?.height}px`,
+              width: `${outgoingElementBounding?.width}px`,
+              left: `${outgoingElementBounding?.x}px`,
+              top: `${outgoingElementBounding?.y}px`,
+            },
+            {
+              zIndex: 10,
+              position: "fixed",
+              height: `${incomingElementBounding?.height}px`,
+              width: `${incomingElementBounding?.width}px`,
+              left: `${incomingElementBounding?.x}px`,
+              top: `${incomingElementBounding?.y}px`,
+            },
+          ],
+          {
+            duration: 800,
+            easing: "ease",
+            // fillMode: "forwards",
+          }
+        );
+        console.log(anim);
+      }
+    },
+    [outgoingElementBounding, incomingElementBounding]
+  );
+  useEffect(
+    function restartElementTransition() {
+      if (isDesktop || !isDesktop) {
+        dispatch(resetElementTransition());
+      }
+    },
+    [isDesktop, dispatch]
+  );
   return (
     <div className="container-app">
       <BgApp />
@@ -91,6 +137,15 @@ const Layout = () => {
       <main ref={refMain} className="container-app__main">
         <HeaderMain ref={refHeader} />
         <div className="background">
+          {outgoingElementBounding && (
+            <div
+              style={{
+                backgroundImage: `url(${outgoingElementBounding?.src})`,
+                backgroundSize: "cover",
+              }}
+              ref={refIncomingElement}
+            ></div>
+          )}
           <Outlet />
         </div>
         {!isDesktop && <PrincipalButtons />}

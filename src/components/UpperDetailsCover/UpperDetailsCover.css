@@ -8,7 +8,11 @@
   align-items: flex-end;
   transition: background 0.3s ease;
 }
-
+.upperBlur {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(20px);
+}
 .details__wrap-info {
   display: flex;
   gap: 1rem;
