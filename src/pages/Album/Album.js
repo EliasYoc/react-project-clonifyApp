@@ -6,7 +6,7 @@ import "./Album.css";
 import AlbumTracks from "./components/AlbumTracks";
 const Album = () => {
   const { albumId } = useParams();
-  const { data, isLoading, isError, error, isSuccess } = useGetSpotifyDataQuery(
+  const { data, isLoading, isError, isSuccess } = useGetSpotifyDataQuery(
     `albums/${albumId}`
   );
   let millisecondsTotal, totalTime;
