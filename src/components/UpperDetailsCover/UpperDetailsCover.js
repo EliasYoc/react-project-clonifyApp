@@ -22,9 +22,12 @@ const UpperDetailsCover = ({
 }) => {
   const dispatch = useDispatch();
   const rgbColor = useSelector(selectRandomRgb);
-  const { pathname } = useLocation();
   const { incomingElementBounding } = useSelector(selectElementTransition);
-  const { refElement, getPosition } = useElementPosition();
+  const { pathname } = useLocation();
+  const { refElement, position } = useElementPosition(
+    document.querySelector(".background")
+  );
+
   useEffect(() => {
     // en themeSlice.js crear objeto que guarde dinamicamente un color de cada section(show/podcast/artist/playlist) de acuerdo al [show/:id]
     // const objPageColors = {
@@ -53,11 +56,27 @@ const UpperDetailsCover = ({
     };
   }, [dispatch, pathname, rgbColor]);
   useEffect(() => {
-    if (!incomingElementBounding) {
-      const incomingElement = getPosition();
+    // console.log(position);
+    if (incomingElementBounding === null && position.width && position.height) {
+      const incomingElement = {
+        width: position.width,
+        height: position.height,
+        x: position.x - position.elementX, //restar numero mayor menos el menor para calcular respecto al elemento padre (getboundingclient es respecto al viewport)
+        y: position.y - position.elementY,
+      };
+      console.log(incomingElement);
       dispatch(setIncomingElement(incomingElement));
     }
-  }, [dispatch, getPosition, incomingElementBounding]);
+  }, [
+    dispatch,
+    position.width,
+    position.height,
+    position.x,
+    position.y,
+    position.elementX,
+    position.elementY,
+    incomingElementBounding,
+  ]);
   return (
     // style={{ backgroundImage: `url(${imgSrc})` }}
     <section
@@ -69,14 +88,13 @@ const UpperDetailsCover = ({
       <div className="upperBlur"></div>
       <div className="details__wrap-info">
         {imgSrc && (
-          <div className="details__wrap-img">
+          <div ref={refElement} className="details__wrap-img">
             {/* crossOrigin anonymous in img tag to detect context.getImageData from canvas */}
             <img
               crossOrigin="anonymous"
               id="upperImg"
               src={imgSrc}
               alt={publisher}
-              ref={refElement}
             />
           </div>
         )}
@@ -88,13 +106,11 @@ const UpperDetailsCover = ({
             {listenerQuantity && <span>{listenerQuantity} oyentes</span>}
             {stringAditionalInfoList.length > 0 &&
               stringAditionalInfoList.map((info, i) => (
-                <span key={i}>• {info}</span>
+                <span className="details__list" key={i}>
+                  • {info}
+                </span>
               ))}
-            {howLongTimeSongs && (
-              <>
-                ,<time>{howLongTimeSongs}</time>
-              </>
-            )}
+            {howLongTimeSongs && <time>{howLongTimeSongs}</time>}
           </p>
         </div>
       </div>

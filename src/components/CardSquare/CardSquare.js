@@ -7,9 +7,19 @@ import "./CardSquare.css";
 const CardSquare = ({ urlImg, altImg, title, anyInfo, id, type }) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const { refElement, getPosition } = useElementPosition();
+  const { refElement, position } = useElementPosition(
+    document.querySelector(".background")
+  );
   const handleRedirect = () => {
-    const outgoingElement = getPosition({ src: refElement.current.src });
+    // const position = getPosition();
+    console.log("saliente", position);
+    const outgoingElement = {
+      width: position.width,
+      height: position.height,
+      y: position.y,
+      x: position.x - position.elementX, //restar numero mayor menos el menor para calcular respecto al elemento padre (getboundingclient es respecto al viewport)
+      src: refElement.current.src,
+    };
     navigate(`/${type}/${id}`);
     dispatch(setOutgoingElement(outgoingElement));
   };

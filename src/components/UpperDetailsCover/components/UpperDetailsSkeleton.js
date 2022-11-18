@@ -5,14 +5,29 @@ import { useElementPosition } from "../../../hooks/useElementPosition";
 import "./UpperDetailsSkeleton.css";
 const UpperDetailsSkeleton = ({ hasImg = false, hasType = false }) => {
   const dispatch = useDispatch();
-  // const refIncomingElement = useRef();
-  const { refElement, getPosition } = useElementPosition();
+  const { refElement, position } = useElementPosition(
+    document.querySelector(".background")
+  );
   useEffect(() => {
     if (hasImg) {
-      const incomingElement = getPosition();
+      const incomingElement = {
+        width: position.width,
+        height: position.height,
+        x: position.x - position.elementX,
+        y: position.y - position.elementY,
+      };
       dispatch(setIncomingElement(incomingElement));
     }
-  }, [hasImg, dispatch, getPosition]);
+  }, [
+    hasImg,
+    dispatch,
+    position.width,
+    position.height,
+    position.x,
+    position.y,
+    position.elementX,
+    position.elementY,
+  ]);
   return (
     <section className="details skeletonUpper">
       <div className="details__blur"></div>

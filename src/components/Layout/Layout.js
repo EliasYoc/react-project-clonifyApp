@@ -96,7 +96,7 @@ const Layout = () => {
           [
             {
               zIndex: 10,
-              position: "fixed",
+              position: "absolute",
               height: `${outgoingElementBounding?.height}px`,
               width: `${outgoingElementBounding?.width}px`,
               left: `${outgoingElementBounding?.x}px`,
@@ -104,7 +104,7 @@ const Layout = () => {
             },
             {
               zIndex: 10,
-              position: "fixed",
+              position: "absolute",
               height: `${incomingElementBounding?.height}px`,
               width: `${incomingElementBounding?.width}px`,
               left: `${incomingElementBounding?.x}px`,
@@ -135,8 +135,8 @@ const Layout = () => {
       <BgApp />
       {isDesktop && <Aside />}
       <main ref={refMain} className="container-app__main">
-        <HeaderMain ref={refHeader} />
         <div className="background">
+          <HeaderMain ref={refHeader} />
           {outgoingElementBounding && (
             <div
               style={{
