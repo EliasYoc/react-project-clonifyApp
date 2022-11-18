@@ -1,24 +1,37 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { useRef } from "react";
 
-export const useElementPosition = () => {
+export const useElementPosition = (element) => {
   const refElement = useRef();
-  const getPosition = (aditionalPropsObj) => {
-    const { x, y } = refElement.current.getBoundingClientRect();
-    const position = {
-      x,
-      y,
-      width: refElement.current.offsetHeight,
-      height: refElement.current.offsetWidth,
+  const [position, setPosition] = useState({});
+  useEffect(() => {
+    const getPosition = () => {
+      const { x, y } = refElement.current?.getBoundingClientRect() ?? {
+        x: undefined,
+        y: undefined,
+      };
+      const { x: elementX, y: elementY } = element?.getBoundingClientRect() ?? {
+        x: undefined,
+        y: undefined,
+      };
+      const position = {
+        x,
+        y,
+        width: refElement.current?.offsetHeight,
+        height: refElement.current?.offsetWidth,
+        elementX,
+        elementY,
+        elementWidth: element?.offsetHeight,
+        elementHeight: element?.offsetWidth,
+      };
+
+      return position;
     };
-    if (aditionalPropsObj) {
-      for (const prop in aditionalPropsObj) {
-        position[prop] = aditionalPropsObj[prop];
-      }
-    }
-    return position;
-  };
+    setPosition(getPosition());
+  }, [element]);
   return {
     refElement,
-    getPosition,
+    position,
   };
 };

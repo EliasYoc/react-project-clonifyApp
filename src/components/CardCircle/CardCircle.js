@@ -6,10 +6,18 @@ import { useElementPosition } from "../../hooks/useElementPosition";
 const CardCircle = ({ urlImg, altImg, title, anyInfo, id, type }) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const { refElement, getPosition } = useElementPosition();
+  const { refElement, position } = useElementPosition(
+    document.querySelector(".background")
+  );
 
   const handleRedirect = () => {
-    const outgoingElement = getPosition({ src: refElement.current.src });
+    const outgoingElement = {
+      x: position.x - position.elementX,
+      y: position.y - position.elementY,
+      width: position.width,
+      height: position.height,
+      src: refElement.current.src,
+    };
     navigate(`/${type}/${id}`);
     dispatch(setOutgoingElement(outgoingElement));
   };

@@ -5,7 +5,7 @@
   background-size: cover;
   position: relative;
   display: flex;
-  align-items: flex-end;
+  /* align-items: center; */
   transition: background 0.3s ease;
 }
 .upperBlur {
@@ -16,8 +16,7 @@
 .details__wrap-info {
   display: flex;
   gap: 1rem;
-  padding: 0 1rem;
-  margin-bottom: 1rem;
+  padding: 1rem;
   width: 100%;
 }
 .details__wrap-img {
@@ -38,10 +37,16 @@
   font-size: 0.75rem;
 }
 .details__title {
-  font-size: clamp(1.5rem, 5.2vw, 2.5rem);
+  font-size: clamp(1.5rem, 5.2vw, 2.8rem);
 }
 .details__aditional {
   font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.details__list:last-of-type::after {
+  content: ",";
 }
 .details__info {
   position: relative;
