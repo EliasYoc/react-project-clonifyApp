@@ -16,6 +16,7 @@ import Podcast from "./pages/Podcast/Podcast";
 import PrivateRoute from "./routers/PrivateRoute";
 import PublicRoute from "./routers/PublicRoute";
 import Artist from "./pages/Artist/Artist";
+import Album from "./pages/Album/Album";
 const reqToken = JSON.parse(sessionStorage.getItem("clonify-req-token"));
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
             path="album/:albumId"
             element={
               <PrivateRoute>
-                <p>Album</p>
+                <Album />
               </PrivateRoute>
             }
           />

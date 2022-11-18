@@ -1,0 +1,41 @@
+.album-page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.all-page-info {
+  flex-grow: 1;
+  background-color: var(--bg-main);
+}
+.section-track {
+  padding: 1rem;
+}
+.track-row {
+  display: flex;
+  justify-content: space-between;
+  border-radius: var(--gral-radius);
+  overflow: hidden;
+  transition: background 0.3s ease;
+  user-select: none;
+}
+.track-row:is(li):hover {
+  background-color: var(--bg-secondary);
+}
+.header-column {
+  border-bottom: 2px solid var(--bg-circles);
+  margin-bottom: 0.5rem;
+}
+.other-columns {
+  text-align: center;
+  width: 75px;
+  flex-shrink: 0;
+}
+.middle-column {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  /* background-color: aqua; */
+}
+.other-columns,
+.middle-column {
+  padding: 1rem 0.5rem;
+}
